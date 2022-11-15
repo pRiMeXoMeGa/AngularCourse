@@ -2,5 +2,14 @@
   <h1>
     {{websiteTitle}}
   </h1>
-  <app-product-list></app-product-list>
+  <nav class="navbar navbar-expand navbar-light bg-light">
+      <a href="" class="navbar-brand">{{websiteTitle}}</a>
+      <ul class="nav nav-pills">
+          <li><a href="" class="nav-link" routerLink="/welcome">Welcome</a></li>
+          <li><a href="" class="nav-link" routerLink="/products">Product List</a></li>
+      </ul>
+  </nav>
+  <div class="container-fluid">
+      <router-outlet></router-outlet>
+  </div>
 </div>

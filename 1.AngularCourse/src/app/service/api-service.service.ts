@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable, tap, catchError, throwError} from "rxjs";
 import { HttpClient, HttpErrorResponse} from "@angular/common/http";
-import { R3SelectorScopeMode } from '@angular/compiler';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiServiceService {
-  PATH_OF_API = 'https://dummyjson.com/';
+  PATH_OF_API = environment.apiURL;
 
-  // https://dummyjson.com/
-  // https://fakestoreapi.com/
-  // https://api.escuelajs.co/api/v1/products
   constructor(private httpClient: HttpClient){ }
 
   getProducts(): Observable<any>{

@@ -37,7 +37,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
             this.products = res;
             this.filteredProducts = this.products.products;
         },
-        error: err => this.errorMsg = err
+        error: err => this.errorMsg = err,
+        // complete: it is a other optional output
       }
     )
   }

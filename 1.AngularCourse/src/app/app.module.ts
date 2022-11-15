@@ -1,33 +1,74 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ApiServiceService } from './service/api-service.service';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { StarComponent } from './star/star.component';
-import { FormsModule } from '@angular/forms';
-import { CovertToSpacesPipe } from './pipe/covert-to-spaces.pipe';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProductModule } from './product.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    ProductListComponent,
-    ProductDetailComponent,
-    StarComponent,
-    CovertToSpacesPipe
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
-    FormsModule,
-    HttpClientModule
+    RouterModule.forRoot([
+      { path: 'welcome', component: WelcomeComponent, title: 'Welcome', },
+      { path: '',   redirectTo: '/welcome', pathMatch: 'full' },
+      // { path: 'signup', component: SignUpComponent, title: 'SignUp Page', },
+      // { path: 'admin', component: AdminPageComponent, title: 'Admin Page', 
+      //   children: [
+      //             {
+      //               path: 'Products',
+      //               component: ViewProductsComponent
+      //             },
+      //             {
+      //               path:'details/:id',
+      //               component: ProductDetailsComponent
+      //             },
+      //             {
+      //               path:'editDetails',
+      //               title: 'Admin Page | Update Product',
+      //               component: NewProductComponent
+      //             },
+      //             {
+      //               path:'newProduct',
+      //               title: 'Admin Page | Add Product',
+      //               component: NewProductComponent
+      //             }
+
+      //             // {
+      //             //   path:'details/:id',
+      //             //   component: ProductDetailsComponent
+      //             // }
+      //   ]
+      // },
+      // { path: 'home', component:,
+      //   children: [
+
+      //         {
+      //             path: 'product',
+      //             component: 
+      //         },
+      //         {
+      //           path: 'details/:id',
+      //           component: 
+      //         },
+      //         {
+      //           path: 'cart',
+      //           component: 
+      //         }
+      //         ]
+      // },
+      { path: '**', component: PageNotFoundComponent }
+        ]), 
+    HttpClientModule,
+    ProductModule
   ],
-  providers: [ApiServiceService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

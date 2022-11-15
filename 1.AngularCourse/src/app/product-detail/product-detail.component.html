@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="card-header">
+        <!-- {{pageTitle+': '+ product?.brand}} // '?' it is safe navigation operator | 
+            but not all ways the best option, for example - it doesn't work with ngModel two-way binding  -->
+        <!-- we can use ngIf instead of '?' safe navigation operator -->
+
+        {{pageTitle+': '+ product?.brand}}
+    </div>
+    <div class="card-footer">
+        <button (click)="onBack()"
+            class="btn btn-outline-secondary"
+            [style.width.px]="btnStyle">
+            <i class="fa fa-chevron-left"></i> Back
+        </button>
+    </div>
+</div>
