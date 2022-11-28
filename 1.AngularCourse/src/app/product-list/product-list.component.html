@@ -8,8 +8,23 @@
                 Filter by:
             </div>
             <div class="col-md-4">
-                <input type="text" 
+                <!-- below line is 2-way binding -->
+                <input type="text" #filterElementRef
                     [(ngModel)] = 'listFilter'
+                    />
+        
+                <!-- below line is long form of 2-way binding 'long-way binding' -->
+                <!-- <input type="text" [ngModel]="listFilter" 
+                    (ngModelChange)='onFilterChange($event)'
+                    /> -->
+            </div>
+            <div class="col-md-2">
+                Filter Name:
+            </div>
+            <div class="col-md-4">
+                <!-- below line is 2-way binding -->
+                <input type="text" #nameElement
+                    [(ngModel)] = 'filterName'
                     />
             </div>
         </div>
@@ -17,6 +32,15 @@
             <div class="col-md-6">
                 <h4>Filter by: {{listFilter}}</h4>
             </div>
+        </div>
+
+        <div class="row">
+            <app-filter class="col-md-10" #childRef
+                        [displayDetail]="includeDetail"
+                        [hitCount]='filteredProducts?.length'
+            ></app-filter>
+
+            {{childRef.listFilterr}}
         </div>
 
         <div class="table-responsive">
@@ -68,5 +92,18 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- <ng-container *ngIf="products.products">
+            <div *ngFor="let product of filteredProducts">
+                <p>hello</p>
+                {{product.id}}
+            </div>
+        </ng-container>
+        <ng-template>
+            <div *ngFor="let product of filteredProducts">
+                <p>no</p>
+                {{product.id}}
+            </div>
+        </ng-template> -->
     </div>
 </div>
